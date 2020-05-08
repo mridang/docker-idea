@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  intellij:
+    build: './intellij'
+    image: docker.pkg.github.com/mridang/docker-idea/intellij:2018.1.8
+  phpstorm:
+    build: './phpstorm'
+    image: docker.pkg.github.com/mridang/docker-idea/phpstorm:2020.1.1
