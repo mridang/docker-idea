@@ -1,5 +1,5 @@
 FROM openjdk:8u151-jdk
-ARG IDEA_VERSION=ideaIC-2018.1.8
+ARG IDEA_VERSION=ideaIC-2020.1
 
 RUN        apt-get update
 RUN        apt-get install -y --no-install-recommends vim
@@ -12,7 +12,7 @@ RUN        apt-get install -y --no-install-recommends groovy
 RUN        apt-get clean
 RUN        rm -rf /var/lib/apt/lists/*
 
-RUN        curl https://download-cf.jetbrains.com/idea/${IDEA_VERSION}-no-jdk.tar.gz > /tmp/ideaIC-jdk.tar.gz
+RUN        curl https://download-cf.jetbrains.com/idea/${IDEA_VERSION}.tar.gz > /tmp/ideaIC-jdk.tar.gz
 
 RUN        mkdir /opt/ide
 RUN        tar -x -C /opt/ide --strip-components=1 -z -f /tmp/ideaIC-jdk.tar.gz
