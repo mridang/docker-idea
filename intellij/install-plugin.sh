@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 # Installs given plugin
 # The plugin is defined by passing the plugin id as an argument.
 # See the scala plugin for example https://plugins.jetbrains.com/plugin/1347-scala
