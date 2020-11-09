@@ -20,7 +20,7 @@ echo "Installing plugin $PLUGIN_ID for $IDEA_VERSION in $PLUGINS_DIR"
 cd "$PLUGINS_DIR" || exit
 
 LATEST=$(curl -s https://plugins.jetbrains.com/api/plugins/$PLUGIN_ID/updates \
-  | jq --arg IDEA_VERSION "$IDE_VERSION" -r '[.[] | select( .version | startswith($IDEA_VERSION))][0].file')
+  | jq --arg IDEA_VERSION "$IDEA_VERSION" -r '[.[] | select( .version | startswith($IDEA_VERSION))][0].file')
 ARCHIVE_NAME=$(basename "$LATEST")
 curl "https://plugins.jetbrains.com/files/$LATEST" > "$ARCHIVE_NAME"
 unzip $ARCHIVE_NAME
