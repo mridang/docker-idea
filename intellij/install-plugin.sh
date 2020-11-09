@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 set -x
 # Installs given plugin
 # The plugin is defined by passing the plugin id as an argument.
