@@ -23,5 +23,5 @@ LATEST=$(curl -s https://plugins.jetbrains.com/api/plugins/$PLUGIN_ID/updates \
   | jq --arg IDEA_VERSION "$IDEA_VERSION" -r '[.[] | select( .version | startswith($IDEA_VERSION))][0].file')
 ARCHIVE_NAME=$(basename "$LATEST")
 curl "https://plugins.jetbrains.com/files/$LATEST" > "$ARCHIVE_NAME"
-unzip $ARCHIVE_NAME
+unzip -q $ARCHIVE_NAME
 rm $ARCHIVE_NAME
