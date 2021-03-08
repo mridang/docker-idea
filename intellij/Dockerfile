@@ -1,7 +1,7 @@
 FROM openjdk:8u151-jdk
 # PLUGIN_IDS is a whitespace separated list of plugins to install
 ARG PLUGIN_IDS
-ARG IDEA_VERSION=2020.1
+ARG IDEA_VERSION=2020.3
 ARG IDEA_RELEASE=ideaIC-$IDEA_VERSION
 
 RUN        apt-get update
@@ -50,6 +50,12 @@ RUN        echo idea.config.path=/etc/idea/config >> /opt/ide/bin/idea.propertie
 
 # Set the permissions of the IDEA directory for hygiene purposes.
 RUN        chmod -R 777 /etc/idea
+# Hardcode scope to "classes"
+RUN        echo "-Didea.analyze.scope=classes" >> /opt/ide/bin/idea64.vmoptions
+RUN        echo "-Didea.analyze.scope=classes" >> /opt/ide/bin/idea.vmoptions
+# Increase max java memory
+RUN        sed -i "s|-Xmx512m|-Xmx1024m|g" /opt/ide/bin/idea.vmoptions
+RUN        sed -i "s|-Xmx750m|-Xmx2048m|g" /opt/ide/bin/idea64.vmoptions
 
 WORKDIR    /home/jetbrains
 ENTRYPOINT ["/opt/ide/bin/inspect.sh"]
