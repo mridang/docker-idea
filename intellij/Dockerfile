@@ -4,20 +4,20 @@ ARG PLUGIN_IDS
 ARG IDEA_VERSION=2020.1
 ARG IDEA_RELEASE=ideaIC-$IDEA_VERSION
 
-RUN        apt-get update
-RUN        apt-get install -y --no-install-recommends vim wget maven groovy jq
+RUN        apt-get update && \
+           apt-get install -y --no-install-recommends vim wget maven groovy jq
 
 # Clean the APT cache to reduce the size of the container. This step is for
 # hygiene and can be omitted if needed.
-RUN        apt-get clean
-RUN        rm -rf /var/lib/apt/lists/*
+RUN        apt-get clean && \
+           rm -rf /var/lib/apt/lists/*
 
 RUN        curl https://download-cf.jetbrains.com/idea/${IDEA_RELEASE}.tar.gz > /tmp/ideaIC-jdk.tar.gz
 
-RUN        mkdir /opt/ide
-RUN        tar -x -C /opt/ide --strip-components=1 -z -f /tmp/ideaIC-jdk.tar.gz
-RUN        ls -lah /opt/ide/
-RUN        rm /tmp/ideaIC-jdk.tar.gz
+RUN        mkdir /opt/ide && \
+           tar -x -C /opt/ide --strip-components=1 -z -f /tmp/ideaIC-jdk.tar.gz && \
+           ls -lah /opt/ide/ && \
+           rm /tmp/ideaIC-jdk.tar.gz
 
 ENV IDEA_HOME="/opt/ide"
 
