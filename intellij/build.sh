@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-IDEA_VERSION=2020.3
+IDEA_VERSION=2020.3.3
 
 docker build \
   --build-arg IDEA_VERSION=$IDEA_VERSION \

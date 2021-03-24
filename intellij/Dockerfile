@@ -1,7 +1,7 @@
 FROM openjdk:8u151-jdk
 # PLUGIN_IDS is a whitespace separated list of plugins to install
 ARG PLUGIN_IDS
-ARG IDEA_VERSION=2020.3
+ARG IDEA_VERSION=2020.3.3
 ARG IDEA_RELEASE=ideaIC-$IDEA_VERSION
 
 RUN        apt-get update && \
