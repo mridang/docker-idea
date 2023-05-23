@@ -1,11 +1,8 @@
-FROM openjdk:8u151-jdk
-ARG IDEA_VERSION=PhpStorm-2021.1.3
+FROM openjdk:21-jdk-slim-bullseye
+ARG IDEA_VERSION=PhpStorm-2023.1.2
 
-RUN        apt-get update
-RUN        apt-get install -y --no-install-recommends vim
-RUN        apt-get install -y --no-install-recommends wget
-RUN        apt-get install -y --no-install-recommends maven
-RUN        apt-get install -y --no-install-recommends groovy
+RUN        apt-get update && \
+           apt-get install -y --no-install-recommends curl wget maven groovy
 
 # Clean the APT cache to reduce the size of the container. This step is for
 # hygiene and can be omitted if needed.
