@@ -1,5 +1,5 @@
-FROM openjdk:8u151-jdk
-ARG IDEA_VERSION=PhpStorm-2021.1.3
+FROM openjdk:21-jdk-bullseye
+ARG IDEA_VERSION=PhpStorm-2023.1.2
 
 RUN        apt-get update
 RUN        apt-get install -y --no-install-recommends vim
